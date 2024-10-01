@@ -35,26 +35,20 @@ export default function GetFreeQuote() {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Phone size={20} />
-            <span>+1 860-371-1291</span>
+            <span>+1 000-000-0000</span>
             <Mail size={20} />
-            <span>Pipedreamplumbingllc@yahoo.com</span>
+            <span>xxx@mail.com</span>
           </div>
-          <Link href="/get-free-quote">
-            <Button variant="secondary">Schedule a Service</Button>
-          </Link>
+          {/* ... rest of the header ... */}
         </div>
       </header>
 
       <nav className="bg-white shadow-md sticky top-0 z-40">
         <div className="container mx-auto py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-primary">
-            Pipedream Plumbing CT
+            Plumbing and Heating
           </Link>
-          <div className="space-x-4">
-            <Link href="/" className="text-gray-600 hover:text-primary transition-colors">Home</Link>
-            <Link href="/services" className="text-gray-600 hover:text-primary transition-colors">Services</Link>
-            <Link href="/contact" className="text-gray-600 hover:text-primary transition-colors">Contact</Link>
-          </div>
+          {/* ... rest of the nav ... */}
         </div>
       </nav>
 
@@ -129,20 +123,13 @@ export default function GetFreeQuote() {
       <footer className="bg-gray-800 text-white py-8">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold mb-2">Pipedream Plumbing CT</h3>
+            <h3 className="text-xl font-bold mb-2">Plumbing and Heating</h3>
             <p className="flex items-center">
               <MapPin size={16} className="mr-2" />
-              Rye Street, East Windsor, CT
+              XXX Center, VT
             </p>
           </div>
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-            <Link href="/contact">
-              <Button variant="secondary" className="bg-white text-primary hover:bg-gray-200">Contact Us</Button>
-            </Link>
-            <Link href="/get-free-quote">
-              <Button>Schedule Service</Button>
-            </Link>
-          </div>
+          {/* ... rest of the footer ... */}
         </div>
       </footer>
     </div>

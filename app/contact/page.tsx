@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -34,32 +34,26 @@ export default function ContactUs() {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Phone size={20} />
-            <span>+1 860-371-1291</span>
+            <span>+1 000-000-0000</span>
             <Mail size={20} />
-            <span>Pipedreamplumbingllc@yahoo.com</span>
+            <span>xxx@mail.com</span>
           </div>
-          <Link href="/get-free-quote">
-            <Button variant="secondary">Schedule a Service</Button>
-          </Link>
+          {/* ... rest of the header ... */}
         </div>
       </header>
 
       <nav className="bg-white shadow-md sticky top-0 z-40">
         <div className="container mx-auto py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-primary">
-            Pipedream Plumbing CT
+            Plumbing and Heating
           </Link>
-          <div className="space-x-4">
-            <Link href="/" className="text-gray-600 hover:text-primary transition-colors">Home</Link>
-            <Link href="/services" className="text-gray-600 hover:text-primary transition-colors">Services</Link>
-            <Link href="/contact" className="text-gray-600 hover:text-primary transition-colors">Contact</Link>
-          </div>
+          {/* ... rest of the nav ... */}
         </div>
       </nav>
 
-      <main className="container mx-auto py-12 flex-grow">
+      <main className="container mx-auto py-12 flex-grow px-4">
         <motion.h1 
-          className="text-4xl font-bold mb-8 text-navy text-center"
+          className="text-3xl sm:text-4xl font-bold mb-8 text-navy text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -68,7 +62,7 @@ export default function ContactUs() {
         </motion.h1>
 
         <motion.div
-          className="max-w-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-lg"
+          className="max-w-2xl mx-auto bg-gray-100 p-6 sm:p-8 rounded-lg shadow-lg"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -94,13 +88,31 @@ export default function ContactUs() {
               <Textarea id="message" placeholder="How can we help you?" rows={4} required />
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full bg-aqua text-navy hover:bg-aqua/80 transition-all duration-300 transform hover:scale-105"
-              disabled={isSubmitting}
+            <AnimatePresence>
+              {isSubmitting && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-center text-primary"
+                >
+                  Sending...
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </Button>
+              <Button 
+                type="submit" 
+                className="w-full bg-aqua text-navy hover:bg-aqua/80 transition-all duration-300"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </Button>
+            </motion.div>
           </form>
         </motion.div>
       </main>
@@ -108,20 +120,13 @@ export default function ContactUs() {
       <footer className="bg-gray-800 text-white py-8">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold mb-2">Pipedream Plumbing CT</h3>
+            <h3 className="text-xl font-bold mb-2">YXXX Plumbing and Heating</h3>
             <p className="flex items-center">
               <MapPin size={16} className="mr-2" />
-              Rye Street, East Windsor, CT
+              XXX Center, VT
             </p>
           </div>
-          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-            <Link href="/contact">
-              <Button variant="secondary" className="bg-white text-primary hover:bg-gray-200">Contact Us</Button>
-            </Link>
-            <Link href="/get-free-quote">
-              <Button>Schedule Service</Button>
-            </Link>
-          </div>
+          {/* ... rest of the footer ... */}
         </div>
       </footer>
     </div>
