@@ -92,26 +92,48 @@ export function HomepageComponent() {
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: false, // This allows the chart to be responsive
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          // This will ensure the legend is readable on smaller screens
+          boxWidth: 10,
+          padding: 10,
+          font: {
+            size: 12,
+          },
+        },
       },
       title: {
         display: true,
         text: 'Impact of Our Plumbing Services',
+        font: {
+          size: 16, // Smaller font size for mobile
+        },
       },
     },
     scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 10, // Smaller font size for x-axis labels on mobile
+          },
+        },
+      },
       y: {
         beginAtZero: true,
         max: 100,
         ticks: {
+          font: {
+            size: 10, // Smaller font size for y-axis labels on mobile
+          },
           callback: function(value: any) {
             return value + '%'
           }
         }
       }
-    }
+    },
   }
 
   return (
@@ -302,26 +324,23 @@ export function HomepageComponent() {
         <section className="py-16 bg-gray-100">
           <div className="container mx-auto px-4">
             <motion.h2 
-              className="text-3xl font-bold mb-8 text-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-3xl font-bold mb-8 text-center text-navy"
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              How We've Helped Our Clients
+              Our Impact
             </motion.h2>
-            <motion.div
-              className="max-w-3xl mx-auto"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Bar options={chartOptions} data={chartData} />
-            </motion.div>
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <div style={{ height: '300px', maxWidth: '100%' }}> {/* Set a fixed height and max-width */}
+                <Bar options={chartOptions} data={chartData} />
+              </div>
+            </div>
             <motion.p
-              className="text-center mt-8 text-lg"
+              className="mt-4 text-center text-gray-600"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
               Our services have significantly improved water savings, energy efficiency, and overall customer satisfaction.
             </motion.p>
